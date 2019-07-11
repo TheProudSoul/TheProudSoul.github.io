@@ -1,0 +1,1151 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      OSPF | The Proud Soul
+    
+  </title>
+  <meta name="author" content="Layla Zheng">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/2.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+					
+						The Proud Soul
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《OSPF》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="https://github.com/TheProudSoul" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/OSPF/" itemprop="url">
+		OSPF
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/OSPF/" itemprop="url">
+		<time datetime="2019-05-12T08:27:27.000Z" itemprop="datePublished">
+	  		2019-05-12
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/OSPF/" itemprop="url">
+		<time datetime="2019-05-12T08:27:27.000Z" itemprop="dateUpdated">
+	  		2019-05-13
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+	
+    <span class="leancloud_visitors" id="/2019/OSPF/_visitors" data-url="/2019/OSPF/" data-title="OSPF">
+       	<i class="fa fa-eye"></i>
+       	热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+
+
+
+	
+    <span class="leancloud_likes" id="/2019/OSPF/_likes" data-url="/2019/OSPF/" data-title="OSPF" rel="unlike">
+        <i class="fa fa-heart"></i>
+        喜欢
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Open Shortest Path First 开放式最短路径优先协议，是用于分配单个自控系统中的路由信息的内部网关协议。</p>
+<p><a href="https://www.cisco.com/c/zh_cn/support/docs/ip/open-shortest-path-first-ospf/7039-1.html" target="_blank" rel="noopener">CISCO中文文档</a></p>
+<p><a href="https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html" target="_blank" rel="noopener">CISCO英文文档</a></p>
+<h2 id="链路状态"><a href="#链路状态" class="headerlink" title="链路状态"></a>链路状态</h2><p>OSPF 是一种<strong>链路状态协议</strong>。我们可以将链路视为路由器的接口。链路状态是对接口及接口与相邻路由器的关系的描述。例如，接口的说明将包括接口的 IP 地址、掩码、所连接的网络的类型、连接到该网络的路由器等。所有这些链路状态的集合形成链路状态数据库。</p>
+<h2 id="OSPF度量"><a href="#OSPF度量" class="headerlink" title="OSPF度量"></a>OSPF度量</h2><p>$$<br>Cost = 参考带宽(10^8) / 接口带宽(b/s)<br>$$</p>
+<ul>
+<li>每个路由器都把自己当做根，并且给予累积成本（Cost值）来计算到达目的地的最短路径。</li>
+<li>在每一个运行OSPF的<strong>接口</strong>上，都维护着一个接口Cost， 接口Cost=100M/接口带宽，其中100M为OSPF的参考带宽值。</li>
+<li>一条路由的Cost由该路由从起源到本路由器沿途所有入站接口的Cost值<strong>累加</strong>。</li>
+</ul>
+<h2 id="OSPF报文类型"><a href="#OSPF报文类型" class="headerlink" title="OSPF报文类型"></a>OSPF报文类型</h2><ul>
+<li>Hello——建立和维护OSPF邻居关系</li>
+<li>DBD——链路状态数据库描述信息（描述LSDB中LSA头部信息）</li>
+<li>LSR——链路状态请求，向OSPF邻居请求链路状态信息</li>
+<li>LSU——链路状态更新（包含一条或多条LSA）</li>
+<li>LSAck——对LSU中的LSA进行确认</li>
+</ul>
+<h2 id="区域与边界路由器"><a href="#区域与边界路由器" class="headerlink" title="区域与边界路由器"></a>区域与边界路由器</h2><ul>
+<li>OSPF 使用泛洪在路由器之间交互链路状态更新。</li>
+<li>路由信息的所有更改都<strong>泛洪给网络中的所有路由器</strong>。</li>
+<li>引入区域是为了给链路状态更新的急剧增长设置边界。</li>
+<li>路由器上的泛洪和 Dijkstra 算法计算限制为<strong>针对区域内的更改</strong>。</li>
+<li>区域之内的所有路由器都有整个区域内部确切的链路状态数据库。</li>
+<li>属于多个区域的路由器以及将这些区域连接到骨干网区域的路由器称为区域边界路由器 (ABR)。</li>
+<li>ABR 必须维护描述骨干网区域和所连接的其他区域的信息。</li>
+<li>区域特定于<u><strong><em>接口</em></strong></u>。所有接口都在同一个区域之内的路由器称为内部路由器 (IR)。接口在多个区域内的路由器称为区域边界路由器 (ABR)。</li>
+<li>在 OSPF 和其他路由协议（IGRP、EIGRP、IS-IS、RIP、BGP、Static）或其他 OSPF 路由进程实例之间用作网关（重分配）的路由器称为自治系统边界路由器 (ASBR)。所有路由器都可以是 ABR 或 ASBR。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/7b19d4ddgy1g2zppv10rng20bf077a9v.gif" alt></p>
+<h2 id="骨干网与区域-0"><a href="#骨干网与区域-0" class="headerlink" title="骨干网与区域 0"></a>骨干网与区域 0</h2><p>当涉及多个区域时，OSPF 具有特殊限制。如果配置了多个区域，则<u><strong>这些区域中必须有一个是区域 0</strong></u>。此区域称为骨干网。当设计网络时，从区域 0 开始然后扩展到其他区域是很好的做法。</p>
+<p>骨干网必须位于所有其他区域的中心，即所有区域都必须在物理上连接到骨干网。接下来便是 OSPF 要求所有区域都将路由信息注入骨干网，骨干网又将这些信息散发到其他区域。</p>
+<p>下图显示 OSPF 网络中的信息流：</p>
+<p><img src="http://ww1.sinaimg.cn/large/7b19d4ddgy1g2zppa4dp9g20as0930sk.gif" alt></p>
+<h2 id="OSPF的三张表"><a href="#OSPF的三张表" class="headerlink" title="OSPF的三张表"></a>OSPF的三张表</h2><ul>
+<li>邻居表——存储了OSPF路由器邻居的状态以及关于该邻居的其他数据。</li>
+<li>拓扑表——OSPF用 <strong>LSA（ Link State Advertisement 链路状态通告）</strong>来描述网络拓扑信息，LSDB中存储着路由器产生或者收到的LSA。</li>
+<li>路由表——基于LSDB进行SPF算法运算，计算得出的路由被加载到路由表中。</li>
+</ul>
+<h2 id="OSPF基本运行步骤"><a href="#OSPF基本运行步骤" class="headerlink" title="OSPF基本运行步骤"></a>OSPF基本运行步骤</h2><ol>
+<li>建立邻接关系（Establish router adjacencies）</li>
+<li>必要的时候进行DR的选举（Elect the DR/BDR）</li>
+<li>发现路由（Discover routes）</li>
+<li>选择合适的路由器（Select appropriate routes）</li>
+<li>维护路由信息（Maintain routing information）</li>
+</ol>
+<h2 id="OSPF网络类型（4种）"><a href="#OSPF网络类型（4种）" class="headerlink" title="OSPF网络类型（4种）"></a>OSPF网络类型（4种）</h2><ul>
+<li>BMA 广播型多路访问</li>
+<li>Point-to-Point 点对点</li>
+<li>NBMA 非广播型多路访问（例如帧中继、X.25、ATM）</li>
+<li>Point-to-MultiPoint 点到多点网络[^1]</li>
+</ul>
+<h2 id="OSPF邻接关系"><a href="#OSPF邻接关系" class="headerlink" title="OSPF邻接关系"></a>OSPF邻接关系</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><blockquote>
+<p>OSPF使用Hello报文来发现直连链路上的其他OSPF路由器， Hello报文发向组播地址224.0.0.5（ All-OSPF-Routers）</p>
+<p>两台OSPF路由器（的接口）需具备匹配的参数才能够建立起OSPF邻居关系</p>
+</blockquote>
+<ol>
+<li>Hello时间间隔</li>
+<li>Dead时间间隔</li>
+<li>区域编号</li>
+<li>认证（如果启用了认证）</li>
+<li>链路MTU大小</li>
+<li>子网掩码</li>
+<li>子网号</li>
+<li>末梢区域设置</li>
+</ol>
+<h3 id="邻接关系建立过程"><a href="#邻接关系建立过程" class="headerlink" title="邻接关系建立过程"></a>邻接关系建立过程</h3><ol>
+<li><strong>失效状态（Down）：</strong>这是邻居会话的初始状态，表示最近没有从邻居收到信息。</li>
+<li><strong>尝试状态（Attempt）：</strong>该状态仅仅适用于连接在NBMA网络上的邻居。该</li>
+<li><strong>初始状态（Init）：</strong>在此状态下，表示最近收到了从邻居发来的Hello数据包。但是，仍然没有和邻居建立双向通信（Bidirectional Communication），例如，路由器自身并没有出现在邻居发送的Hello数据包中。</li>
+<li><strong>双向通信状态（2-Way）：</strong>此状态意味着两台路由器之间建立了双向通信。在此状态下还将进行DR和BDR的选举（只有处于2-Way状态的路由器才有资格参选DR和BDR）</li>
+<li><strong>信息交换初始状态（ExStart）：</strong>这个状态是建立邻接关系的第一步。该状态的目标是决定信息交换时路由器的主从关系，并确定初始数据库描述（DD）数据包的序列号。具有最高路由器ID的路由器将成为主路由器。</li>
+<li><strong>信息交换状态（ExChange）：</strong>在此状态的路由器通过向邻居发送DD数据包来描述其完整的链路状态数据库。每一个DD数据包都有一个序列号，并且需要被显式的确认。在任何时候，每次只能发送一个DD数据包。在此状态下，路由器也可以发送链路状态请求数据包，用来向邻居请求最新的LSA。实际上，这些状态的邻接关系完全有能力发送和接收所有类型的OSPF协议数据包。</li>
+<li><strong>信息加载状态（Loading）：</strong>在此状态下，路由器将会向邻居路由器发送链路状态请求数据包，用来请求信息交换状态发现的最新的LSA。</li>
+<li><strong>完全邻接状态（Full）：</strong>在此状态下，邻居路由器形成完全邻接关系。这些邻接关系将会在路由器LSA和网络LSA中被描述。</li>
+</ol>
+<h2 id="指定路由器和备份指定路由器"><a href="#指定路由器和备份指定路由器" class="headerlink" title="指定路由器和备份指定路由器"></a>指定路由器和备份指定路由器</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>在<u>广播多路访问网络</u>和<u>NBMA</u>网络上会选举<strong>DR(指定路由器)</strong>和<strong>BDR(备份指定路由器)</strong>。</li>
+<li>所有其他路由器只与DR和BDR建立完全邻居关系，其他路由器之间的邻居状态停留在<strong>2-Way状态</strong>。</li>
+<li>所有其他路由器使用组播目的地址 <strong><em>224.0.0.5</em></strong> 向DR和BDR发送链路状态更新。DR 和BDR 使用组播目的地址 <strong><em>224.0.0.6</em></strong> 向区域内所有其他OSPF路由器发送数据包。</li>
+<li>为了避免因DR失效导致的<u>单点故障</u>，多路访问网络上还将选举BDR。DR失效时，BDR将成为DR，由于网络上其他路由器已经和BDR形成了完全邻接关系，因此可以将DR失效对网络的影响降至最低。</li>
+</ul>
+<blockquote>
+<p>DR的概念是将多路访问网络看作一个“伪节点（Pseudo Node）”。当SPF进行计算的时候，<strong>把链路看作一个节点</strong>，与该链路相连的路由器也是连接到这个节点上的。从与伪节点相连的路由器到这个伪节点的代价是该路由器与这个多路访问网络相连的接口的出站代价，从伪节点到任何与之相连的路由器的代价都为0。</p>
+<p>一台路由器可能连接到多个多路访问网络，该路由器可能是它所连接的其中一个多路访问网络的DR，也可能不是它所连接的另一个多路访问网络的DR，也就是说，<strong>DR是路由器接口的属性</strong>，而不是整个路由器的属性。</p>
+</blockquote>
+<h3 id="DR的工作"><a href="#DR的工作" class="headerlink" title="DR的工作"></a>DR的工作</h3><ul>
+<li>描述该多路访问网络和与其相连的路由器。</li>
+<li>管理该多路访问网络上的LSA洪泛扩散过程。</li>
+</ul>
+<h3 id="DR和BDR的相关选举规则"><a href="#DR和BDR的相关选举规则" class="headerlink" title="DR和BDR的相关选举规则"></a>DR和BDR的相关选举规则</h3><ul>
+<li>如果一台OSPF路由器的<strong>接口优先级</strong>（Priority）为0，那么这台路由器永远不能成为DR或BDR。</li>
+<li>具有<strong>最高优先级</strong>的路由器（的接口）将会选举为DR，具有次高优先级的路由器将会选举为BDR。</li>
+<li>如果同时有多台路由器具有相同的优先级，那么具有<strong>最高路由器ID</strong>的路由器将会选举为DR。</li>
+<li>当DR失效时，BDR将成为DR，并将重新选举一个BDR。</li>
+<li>优先级的取值范围为0-255，更高的优先级意味着路由器有更大的机会成为DR。</li>
+<li>如果一台具有更高优先级的路由器在选举完DR和BDR之后接入网络，该路由器将不会成为DR或BDR，直到DR和BDR失效，当DR失效，具有更高优先级的路由器也只会成为BDR。即DR和BDR的选举是<strong>非抢占式</strong>的。</li>
+</ul>
+<h3 id="路由器ID"><a href="#路由器ID" class="headerlink" title="路由器ID"></a>路由器ID</h3><ul>
+<li>路由器标示符， 用于在一个OSPF域中唯一地标识一台路由器， 每台运行OSPF的路由器具备Router-ID；</li>
+<li>OSPF Router-ID的设定可以通过手工配置的方式， 或使用自动获取的方式。 自动选取的机制是： 若路由器存在<u>loopback接口</u>， 则选最大的loopback接口IP地址， 若无则选<u>活跃</u>的物理接口中IP地址最大的作为RouterID；</li>
+<li>Router-ID值遵循稳定第一的原则。</li>
+</ul>
+<h2 id="OSPF的配置"><a href="#OSPF的配置" class="headerlink" title="OSPF的配置"></a>OSPF的配置</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><ul>
+<li><p>开启一个OSPF进程</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">Router(config)#</span><span class="bash">router ospf process-id</span></span><br></pre></td></tr></table></figure>
+<p>process-id 为OSPF进程号，进程号只具有本地意义</p>
+</li>
+<li><p>宣告特定的网络到OSPF区域</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">Router(config-router)#</span><span class="bash">network address wildcard-mask area area-id</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>Wildcard-Mask 通配符掩码——32bit的点分十进制格式表示的掩码。跟子网掩码相反，0 是匹配位，1 是忽略位</li>
+<li><p>查看OSPF邻居表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">Router#</span><span class="bash"> show ip ospf neighbor</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看OSPF LSDB</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">Router#</span><span class="bash"> show ip ospf database</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>[^1]: <a href="https://zh.wikipedia.org/wiki/开放式最短路径优先#OSPF网络类型" target="_blank" rel="noopener">Open Shortest Path First</a></p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/二层交换基础/" title="二层交换基础" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/EIGRP/" title="EIGRP" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/EIGRP/" title="EIGRP">
+								EIGRP			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 11日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简介Enhanced Interior Gateway Routing Protocol  增强型内部网关协议是是增强的距离矢量协议，它依靠扩散更新算法 (DUAL) 计算网络中到目标的最短路径。
+CISCO中文文档
+CISCO英文文...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/EIGRP/" title="EIGRP">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/EIGRP.jpg" alt="EIGRP">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/IP路由基础/" title="IP路由基础">
+								IP路由基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 10日, 2019				
+							</p>
+							<p class="relate-post-content">
+								路由的概念路由（routing）是指分组从源到目的地时，决定端到端路径的网络范围的进程。
+路由表在计算机网络中，路由表（routing table）或称路由择域信息库（RIB, Routing Information Base），是一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/IP路由基础/" title="IP路由基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8E%9F%E7%90%86.jpg" alt="IP路由基础">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/openvpn/" title="使用OpenVPN来构建VPN">
+								使用OpenVPN来构建VPN			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 15日, 2019				
+							</p>
+							<p class="relate-post-content">
+								描述外网客户端与内网数据服务器均加入一个虚拟局域网，并使用该虚拟网赋予的 IP 地址，解决服务器可见性问题
+
+IP隧道技术
+保留IP地址：10.8.0.0/24
+
+还有通信安全问题，专用网
+
+SSL/TLS、IPSec等等
+
+使用Op...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/openvpn/" title="使用OpenVPN来构建VPN">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/black_bear.jpg" alt="使用OpenVPN来构建VPN">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/stp/" title="STP生成树协议">
+								STP生成树协议			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								技术背景
+二层链路没有冗余——网络存在单点 / 单线路故障
+网络的冗余性增强——出现二层环路
+环路带来的问题：广播风暴；多帧复制；MAC表紊乱
+
+简介
+生成树协议 (STP) 是在网桥和交换机上运行的第二层协议。
+STP 的规范是 I...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/stp/" title="STP生成树协议">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/stp.jpg" alt="STP生成树协议">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/VLAN/" title="VLAN">
+								VLAN			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								技术背景
+交换机的所有接口属于一个广播域，往往也是一个逻辑子网；
+用户无法根据业务需要灵活的在交换机上进行广播域的隔离；
+随着网络规模越来越大、数量越来越多，广播风暴将给网络带来重大问题；
+VLAN（Virtual LAN）技术提供了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/VLAN/" title="VLAN">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/7b19d4ddly1g30pgo4i8gj24002o0u0z.jpg" alt="VLAN">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/二层交换基础/" title="二层交换基础">
+								二层交换基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								园区网中的二层交换
+二层交换机的主要功能
+终端设备的接入
+学习MAC地址，并维护MAC地址表
+以太网数据帧的交换，根据目的MAC地址转发数据帧
+防止二层环路
+
+MAC地址的概念
+MAC地址有48位，通常被表示为点分十六进制数；
+MAC...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/二层交换基础/" title="二层交换基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="二层交换基础">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- gitalk comment -->
+			<!-- show gitalk comment -->
+<div id="gitalk-container"></div>
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//Thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//Remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//Create gitalk
+	var gitalk = new Gitalk({
+		clientID: 'c7030b8880ec60ea5500',
+		clientSecret: 'a6781604ebc5605f350598c34ce93ad108c383e0',
+		//id: window.location.pathname,
+		//id: decodeURI(window.location.pathname),
+		//id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: decodeURI( md5( location.href.trimEnd('#.*$,\\?.*$,index.html$') ) ),
+		repo: 'TheProudSoul.github.io',
+		owner: 'TheProudSoul',
+		admin: 'TheProudSoul',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'XMkIMLftcYs1RHJjctumEXyR-gzGzoHsz',
+            appkey = 'mkv4d3lW0NPTHs6H322WvWKN';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+	
+
+
+<!-- show math formula -->
+
+	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config(
+			{ 
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']]
+				} 
+			}
+		);
+	</script>
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="https://github.com/TheProudSoul" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by Layla Zheng. All Rights Reserved.
+			
+			
+			
+		</p>
+		<p>
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+
+   
+	<div id="topN">
+		<div class="topN-title" data-title="热门文章"></div> 
+	</div>
+	
+    <script>
+        var appid = 'XMkIMLftcYs1RHJjctumEXyR-gzGzoHsz',
+            appkey = 'mkv4d3lW0NPTHs6H322WvWKN',
+            limitCount = 10;
+        if( $('#topN').length ){
+            AV.initialize(appid, appkey);
+            var Counter = AV.Object.extend("Counter");  
+            topNPost(Counter, limitCount);
+        }
+    </script>
+   
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+
+	<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+	<script>
+	  if (window.mermaid) {
+		mermaid.initialize({theme: 'forest'});
+	  }
+	</script>
+  
+	</body>	
+</html>

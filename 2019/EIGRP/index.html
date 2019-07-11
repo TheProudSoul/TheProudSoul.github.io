@@ -1,0 +1,1192 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      EIGRP | The Proud Soul
+    
+  </title>
+  <meta name="author" content="Layla Zheng">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/2.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+					
+						The Proud Soul
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《EIGRP》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="https://github.com/TheProudSoul" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/EIGRP/" itemprop="url">
+		EIGRP
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/EIGRP/" itemprop="url">
+		<time datetime="2019-05-10T16:00:00.000Z" itemprop="datePublished">
+	  		2019-05-11
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/EIGRP/" itemprop="url">
+		<time datetime="2019-05-10T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-05-13
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+					
+		</span>
+		
+		
+
+	
+    <span class="leancloud_visitors" id="/2019/EIGRP/_visitors" data-url="/2019/EIGRP/" data-title="EIGRP">
+       	<i class="fa fa-eye"></i>
+       	热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+
+
+
+	
+    <span class="leancloud_likes" id="/2019/EIGRP/_likes" data-url="/2019/EIGRP/" data-title="EIGRP" rel="unlike">
+        <i class="fa fa-heart"></i>
+        喜欢
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Enhanced Interior Gateway Routing Protocol  增强型内部网关协议是是增强的距离矢量协议，它依靠<strong>扩散更新算法 (DUAL)</strong> 计算网络中到目标的最短路径。</p>
+<p><a href="https://www.cisco.com/c/zh_cn/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/16406-eigrp-toc.html" target="_blank" rel="noopener">CISCO中文文档</a></p>
+<p><a href="https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/16406-eigrp-toc.html" target="_blank" rel="noopener">CISCO英文文档</a></p>
+<h2 id="EIGRP优点"><a href="#EIGRP优点" class="headerlink" title="EIGRP优点"></a>EIGRP优点</h2><ul>
+<li>在正常工作期间，网络资源的使用率非常低；仅在稳定网络上传输 hello 数据包</li>
+<li>当发生更改时，仅传播路由表更改，而不传播整个路由表；这可减少路由协议自身放在网络上的负载</li>
+<li>可以快速收敛网络拓扑中的更改（在某些情况下，几乎可以瞬间收敛</li>
+</ul>
+<h2 id="EIGRP的三张表"><a href="#EIGRP的三张表" class="headerlink" title="EIGRP的三张表"></a>EIGRP的三张表</h2><ul>
+<li>IP EIGRP Neighbor Table 邻居表——用来存放和邻居路由器相关的数据。</li>
+<li>IP EIGRP Topology Table 拓扑表——用来存放所有从邻居路由器学习到的路径信息。</li>
+<li>The IP Routing Table 路由表——拓扑表中的后继（Successor）会被放入路由表，路由器根据路由表来转发数据包。</li>
+</ul>
+<h2 id="EIGRP数据包"><a href="#EIGRP数据包" class="headerlink" title="EIGRP数据包"></a>EIGRP数据包</h2><ul>
+<li>HELLO分组：以224.0.0.10发送，无需确认Hello包</li>
+<li>更新：只在必要的时候传递必要的信息；以可靠方式发送，需要确认</li>
+<li>查询</li>
+<li>应答：响应查询分组，单播；可靠方式传播</li>
+<li>确认（ACK）</li>
+</ul>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><h3 id="邻居发现和维护（邻居表）"><a href="#邻居发现和维护（邻居表）" class="headerlink" title="邻居发现和维护（邻居表）"></a>邻居发现和维护（邻居表）</h3><p>为了在整个网络中分配路由信息，EIGRP 使用<strong>非周期性</strong>的<strong>增量</strong>路由更新。（EIGRP 只在这些路径更改时发送有关已更改路径的路由更新）</p>
+<p>只发送路由更新的基本问题是：无法知道邻居路由器是否挂了。EIGRP每隔一定时间就发送hello数据包，这个时间称为<strong>hello间隔</strong>。</p>
+<p>EIGRP 依靠邻居关系在整个网络中<strong>可靠</strong>地传播路由表更改；当两个路由器在公共网络上看到<strong>彼此</strong>的 hello 数据包时，它们成为邻居。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">router#</span> show ip eigrp neighbors</span><br></pre></td></tr></table></figure>
+<h3 id="建立拓扑表"><a href="#建立拓扑表" class="headerlink" title="建立拓扑表"></a>建立拓扑表</h3><p>邻居路由器彼此通信，交换它们的<strong>拓扑表</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">router#</span> show ip eigrp topology</span><br></pre></td></tr></table></figure>
+<p>拓扑表包含建立到每个可达网络的一组距离和矢量所需的信息，包括：</p>
+<ul>
+<li>上游邻居报告的到此目标的路径上的<strong>最低带宽</strong></li>
+<li>总延迟</li>
+<li>路径可靠性</li>
+<li>路径负载</li>
+<li>最短路径最大传输单元 (MTU)</li>
+<li>可行距离</li>
+<li>报告距离</li>
+<li>路由源（外部路由将被标记）</li>
+</ul>
+<h3 id="EIGRP的Metric"><a href="#EIGRP的Metric" class="headerlink" title="EIGRP的Metric"></a>EIGRP的Metric</h3><h4 id="5个标准"><a href="#5个标准" class="headerlink" title="5个标准"></a>5个标准</h4><ul>
+<li>带宽（bandwidth）</li>
+<li>延迟（delay)</li>
+<li>可靠性（reliability)</li>
+<li>负载（loading)</li>
+<li>最大传输单元（MTU)</li>
+</ul>
+<h4 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h4><p>$$<br>[(K1 × Bandwidth + \frac{K2 × Bandwidth}{256 - Load} + K3 × Delay)×(\frac{K5}{Reliability + K4})] × 256<br>$$</p>
+<ul>
+<li><strong>注意：</strong> 如果K5 = 0，公式减少到<br>$$<br>[(K1 × Bandwidth + \frac{K2 × Bandwidth}{256 - Load} + K3 × Delay)] × 256<br>$$</li>
+<li>默认K1 = 1，K2 = 0，K3 = 1，K4 = 0，K5 = 0</li>
+<li>延迟取值沿路所有数据出接口（或路由入口）延迟的累加Delay=延迟(us) / 10 × 256（数据传输方向和路由传输方向相反！！！）</li>
+<li>带宽取值沿路所有数据出接口（或路由入口）带宽的最低值$Bandwidth=[10^7 / 带宽(Kbps)] × 256$</li>
+<li><strong>EIGRP路由Metric默认为 $延迟+带宽$</strong></li>
+<li>EIGRP域内所有路由器的K值都必须设为相同的值</li>
+</ul>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ul>
+<li><strong>Successor 后继路由器</strong>——被实际选中作为到达目标网络所使用的下一跳路由器。</li>
+<li><strong>Fessible Successor 可行后继路由器</strong>——到达该目标网络的备份下一跳路由器（必须满足FC）。</li>
+<li><strong>Advertised Distance 通告距离</strong>——邻居到达目标网络的度量值。</li>
+<li><strong>Feasible Distance 可行距离</strong>——邻居到达目标网络的度量值（ AD）加上本路由器到达该邻居的度量值。</li>
+<li><strong>Feasible Condition 可行性条件</strong>——邻居到达目标网络的度量值（ AD）小于本路由器的FD时，则认为该邻居通告的路径满足FC。</li>
+</ul>
+<h3 id="判定一条路径是否无环路"><a href="#判定一条路径是否无环路" class="headerlink" title="判定一条路径是否无环路"></a>判定一条路径是否无环路</h3><p>DUAL算法：<u><strong>Diffusing Update Algorithm 用于计算最佳无环路径和备用路径</strong></u></p>
+<p><img src="http://ww1.sinaimg.cn/large/7b19d4ddgy1g2yzm95w0tj20j90di0tm.jpg" alt></p>
+<p>关键点：</p>
+<ul>
+<li>关键路径不可用时使用可用后继路径</li>
+<li>无可用后继路径时向邻居求助</li>
+</ul>
+<h3 id="水平分割与毒性逆转"><a href="#水平分割与毒性逆转" class="headerlink" title="水平分割与毒性逆转"></a>水平分割与毒性逆转</h3><ul>
+<li>水平分割规则规定：永远不从通过其获知路由的接口通告该路由。</li>
+<li>毒性逆转规则规定：一旦通过某个接口获知路由，便通过该同一接口将其通告回为不可达路由。</li>
+<li>举例：</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/7b19d4ddgy1g2yw3yburfg209004xwec.gif" alt></p>
+<blockquote>
+<p><em>路由器one</em> 通过一个<strong>多点接口</strong>（如帧中继）连接到 <em>路由器 two和three</em> </p>
+</blockquote>
+<p>水平分割——如果 <em>路由器one</em> 从 <em>路由器 two</em> 获知 <em>网络 A</em>，那么它不会从<strong>同一接口</strong>将到 <em>网络 A</em>  的路由通告回 <em>路由器 3</em>。</p>
+<p>毒性逆转——当 <em>路由器one</em> 从 <em>路由器two</em> 获知网络A时，它会通过其到 <em>路由器two和three</em> 的链路通告 <em>网络A</em> 为<strong>不可达网络</strong>。如果<em>路由器three</em>显示通过 <em>路由器one</em> 到 <em>网络A</em> 的任何路径，它将由于不可达通告删除该路径。</p>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><p>EIGRP 中有两种汇总形式：自动汇总和手动汇总。</p>
+<h3 id="自动汇总"><a href="#自动汇总" class="headerlink" title="自动汇总"></a>自动汇总</h3><p>EIGRP 每次穿过<strong>两个不同的主类网络之间的边界</strong>时会执行自动汇总。</p>
+<p><img src="http://ww1.sinaimg.cn/large/7b19d4ddgy1g2yy5bqbc6g20c90613yd.gif" alt></p>
+<p><em>路由器two</em> 只向 <em>路由器one</em> 通告 10.0.0.0/8 网络，因为 <em>路由器2</em> 用来到达 <em>路由器1</em> 的接口位于不同的<strong>主类网络</strong>中（A类网络和B类网络）。</p>
+<h3 id="手动汇总"><a href="#手动汇总" class="headerlink" title="手动汇总"></a>手动汇总</h3><p>字面意思。。手动配置。。</p>
+<h2 id="EIGRP的配置"><a href="#EIGRP的配置" class="headerlink" title="EIGRP的配置"></a>EIGRP的配置</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><ul>
+<li>创建EIGRP进程，并进入路由进程的配置模式</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Router(config)<span class="comment">#router eigrp autonomous-system-num</span></span><br></pre></td></tr></table></figure>
+<p>EIGRP将<em>autonomous-system</em>-num参数称为“自治系统”编号</p>
+<ul>
+<li>在指定的接口上激活EIGRP</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Router(config-router)<span class="comment">#network network-number [wildcard-mask]</span></span><br></pre></td></tr></table></figure>
+<p>如果不加通配符掩码，则自动识别为主类通告，也就是如果键入 <em>network 10.1.1.0</em>，实际为 <em>network 10.0.0.0</em></p>
+<h3 id="查看及排错"><a href="#查看及排错" class="headerlink" title="查看及排错"></a>查看及排错</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Router#show ip eigrp neighbors</td>
+<td>Displays the neighbors discovered by IP EIGRP</td>
+</tr>
+<tr>
+<td>Router#show ip eigrp topology</td>
+<td>Displays the IP EIGRP topology table</td>
+</tr>
+<tr>
+<td>Router#show ip route eigrp</td>
+<td>Displays current EIGRP entries in the routing table</td>
+</tr>
+<tr>
+<td>Router#show ip protocols</td>
+<td>Displays the parameters and current state of the active routing protocol process</td>
+</tr>
+<tr>
+<td>Router#show ip eigrp traffic</td>
+<td>Displays the number of IP EIGRP packets sent and received</td>
+</tr>
+<tr>
+<td>Router#debug eigrp packet</td>
+<td>Displays all types of EIGRP packets, both sent and received</td>
+</tr>
+<tr>
+<td>Router#debug eigrp neighbor</td>
+<td>Displays the EIGRP neighbor interaction</td>
+</tr>
+<tr>
+<td>Router#debug ip eigrp route</td>
+<td>Displays advertisements and changes EIGRP makes to the routing table</td>
+</tr>
+<tr>
+<td>Router#debug ip eigrp summary</td>
+<td>Displays a brief report of the EIGRP routing activity</td>
+</tr>
+<tr>
+<td>Router#show ip eigrp events</td>
+<td>Displays the different categories of EIGRP activity, including route calculations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="EIGRP负载均衡"><a href="#EIGRP负载均衡" class="headerlink" title="EIGRP负载均衡"></a>EIGRP负载均衡</h2><p>EIGRP 在路由表中最多放置四个<strong>等价路由</strong>，然后路由器将对这些路由进行负载均衡。负载均衡的类型（按数据包或按目标）取决于在路由器中执行的交换的类型。但是，EIGRP 也可以在<strong>非等价链路</strong>上进行负载均衡。</p>
+<h3 id="等价负载均衡"><a href="#等价负载均衡" class="headerlink" title="等价负载均衡"></a>等价负载均衡</h3><ul>
+<li>所谓的等代价路径指的到达同一个目的地度量值相等的路径</li>
+<li>默认最多支持4条等价路径之间进行流量负载，最大可为16条</li>
+</ul>
+<h3 id="非等价负载均衡"><a href="#非等价负载均衡" class="headerlink" title="非等价负载均衡"></a>非等价负载均衡</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">Router(config-router)#</span><span class="bash"> Variance multiplier</span></span><br></pre></td></tr></table></figure>
+<p>EIGRP在多条路径上执行非等价负载均衡的条件：</p>
+<ul>
+<li>路由必须是无环的（即满足FC条件： AD&lt;FDmin）</li>
+<li>FD &lt;= FDmin × multiplier（差异值是一个乘数：流量将被放到<u>度量小于最佳路径度量与差异值相乘得到的结果</u>的任何链路上。）</li>
+</ul>
+<h3 id="举栗子——"><a href="#举栗子——" class="headerlink" title="举栗子——"></a>举栗子——</h3><p>假定有四条路径到指定的目标，并且这些路径的度量如下：</p>
+<ul>
+<li>路径 1：1100</li>
+<li>路径 2：1100</li>
+<li>路径 3：2000</li>
+<li>路径 4：4000</li>
+</ul>
+<p>默认情况下，路由器将流量同时放在路径 1 和 2 上。（等价负载均衡）<strong>使用 EIGRP 的 variance 命令来指示路由器同时将流量放在路径 3 和 4 上。</strong>要均衡路径 1、2 和 3 上的负载，可以使用差异值 2，因为 1100 x 2 = 2200，该值大于通过路径 3 的度量。同样地，要同时添加路径 4，需要在 <strong>router eigrp</strong> 命令下发出 variance 4。</p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="http://pqn9lmwg6.bkt.clouddn.com/EIGRP.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/OSPF/" title="OSPF" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/IP路由基础/" title="IP路由基础" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/OSPF/" title="OSPF">
+								OSPF			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简介Open Shortest Path First 开放式最短路径优先协议，是用于分配单个自控系统中的路由信息的内部网关协议。
+CISCO中文文档
+CISCO英文文档
+链路状态OSPF 是一种链路状态协议。我们可以将链路视为路由器的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/OSPF/" title="OSPF">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="OSPF">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/IP路由基础/" title="IP路由基础">
+								IP路由基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 10日, 2019				
+							</p>
+							<p class="relate-post-content">
+								路由的概念路由（routing）是指分组从源到目的地时，决定端到端路径的网络范围的进程。
+路由表在计算机网络中，路由表（routing table）或称路由择域信息库（RIB, Routing Information Base），是一...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/IP路由基础/" title="IP路由基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8E%9F%E7%90%86.jpg" alt="IP路由基础">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/openvpn/" title="使用OpenVPN来构建VPN">
+								使用OpenVPN来构建VPN			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 15日, 2019				
+							</p>
+							<p class="relate-post-content">
+								描述外网客户端与内网数据服务器均加入一个虚拟局域网，并使用该虚拟网赋予的 IP 地址，解决服务器可见性问题
+
+IP隧道技术
+保留IP地址：10.8.0.0/24
+
+还有通信安全问题，专用网
+
+SSL/TLS、IPSec等等
+
+使用Op...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/openvpn/" title="使用OpenVPN来构建VPN">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/black_bear.jpg" alt="使用OpenVPN来构建VPN">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/stp/" title="STP生成树协议">
+								STP生成树协议			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								技术背景
+二层链路没有冗余——网络存在单点 / 单线路故障
+网络的冗余性增强——出现二层环路
+环路带来的问题：广播风暴；多帧复制；MAC表紊乱
+
+简介
+生成树协议 (STP) 是在网桥和交换机上运行的第二层协议。
+STP 的规范是 I...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/stp/" title="STP生成树协议">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://pqn9lmwg6.bkt.clouddn.com/stp.jpg" alt="STP生成树协议">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/VLAN/" title="VLAN">
+								VLAN			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								技术背景
+交换机的所有接口属于一个广播域，往往也是一个逻辑子网；
+用户无法根据业务需要灵活的在交换机上进行广播域的隔离；
+随着网络规模越来越大、数量越来越多，广播风暴将给网络带来重大问题；
+VLAN（Virtual LAN）技术提供了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/VLAN/" title="VLAN">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="http://ww1.sinaimg.cn/large/7b19d4ddly1g30pgo4i8gj24002o0u0z.jpg" alt="VLAN">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/二层交换基础/" title="二层交换基础">
+								二层交换基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								园区网中的二层交换
+二层交换机的主要功能
+终端设备的接入
+学习MAC地址，并维护MAC地址表
+以太网数据帧的交换，根据目的MAC地址转发数据帧
+防止二层环路
+
+MAC地址的概念
+MAC地址有48位，通常被表示为点分十六进制数；
+MAC...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/二层交换基础/" title="二层交换基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="二层交换基础">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- gitalk comment -->
+			<!-- show gitalk comment -->
+<div id="gitalk-container"></div>
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//Thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//Remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//Create gitalk
+	var gitalk = new Gitalk({
+		clientID: 'c7030b8880ec60ea5500',
+		clientSecret: 'a6781604ebc5605f350598c34ce93ad108c383e0',
+		//id: window.location.pathname,
+		//id: decodeURI(window.location.pathname),
+		//id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: decodeURI( md5( location.href.trimEnd('#.*$,\\?.*$,index.html$') ) ),
+		repo: 'TheProudSoul.github.io',
+		owner: 'TheProudSoul',
+		admin: 'TheProudSoul',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'XMkIMLftcYs1RHJjctumEXyR-gzGzoHsz',
+            appkey = 'mkv4d3lW0NPTHs6H322WvWKN';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+	
+
+
+<!-- show math formula -->
+
+	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config(
+			{ 
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']]
+				} 
+			}
+		);
+	</script>
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="https://github.com/TheProudSoul" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by Layla Zheng. All Rights Reserved.
+			
+			
+			
+		</p>
+		<p>
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+
+   
+	<div id="topN">
+		<div class="topN-title" data-title="热门文章"></div> 
+	</div>
+	
+    <script>
+        var appid = 'XMkIMLftcYs1RHJjctumEXyR-gzGzoHsz',
+            appkey = 'mkv4d3lW0NPTHs6H322WvWKN',
+            limitCount = 10;
+        if( $('#topN').length ){
+            AV.initialize(appid, appkey);
+            var Counter = AV.Object.extend("Counter");  
+            topNPost(Counter, limitCount);
+        }
+    </script>
+   
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+
+	<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+	<script>
+	  if (window.mermaid) {
+		mermaid.initialize({theme: 'forest'});
+	  }
+	</script>
+  
+	</body>	
+</html>
